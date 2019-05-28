@@ -16,7 +16,7 @@ namespace S1G6_PVFAPP.Models
     {
         public int SalesPersonID { get; set; }
         public string SalesPersonName { get; set; }
-        public decimal SalesPersonPhone { get; set; }
+        public string SalesPersonPhone { get; set; }
         public string SalesPersonEmailID { get; set; }
         public int TerritoryID { get; set; }
     

@@ -17,7 +17,7 @@ namespace S1G6_PVFAPP.Models
         public int EmployeeID { get; set; }
         public string EmployeeName { get; set; }
         public string EmployeeAddress { get; set; }
-        public decimal EmployeePhone { get; set; }
+        public string EmployeePhone { get; set; }
         public string EmployeeEmailID { get; set; }
         public string EmployeeGender { get; set; }
         public string EmployeeDesignation { get; set; }

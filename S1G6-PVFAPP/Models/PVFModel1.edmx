@@ -18,7 +18,7 @@ warning 6002: The table/view 'S1G6-PVFDB.dbo.Customer' does not have a primary k
           <Property Name="CustomerName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CustomerAddress" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="CustomerPostalCode" Type="varchar" MaxLength="6" Nullable="false" />
-          <Property Name="CustomerPhone" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CustomerPhone" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CustomerEmailID" Type="varchar" MaxLength="50" />
           <Property Name="CustomerCity" Type="char" MaxLength="100" />
         </EntityType>
@@ -37,7 +37,7 @@ warning 6002: The table/view 'S1G6-PVFDB.dbo.Customer' does not have a primary k
           <Property Name="EmployeeID" Type="int" Nullable="false" />
           <Property Name="EmployeeName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EmployeeAddress" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="EmployeePhone" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="EmployeePhone" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EmployeeEmailID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EmployeeGender" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="EmployeeDesignation" Type="varchar" MaxLength="50" Nullable="false" />
@@ -121,7 +121,7 @@ warning 6002: The table/view 'S1G6-PVFDB.dbo.ProducedIn' does not have a primary
           </Key>
           <Property Name="SalesPersonID" Type="int" Nullable="false" />
           <Property Name="SalesPersonName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SalesPersonPhone" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="SalesPersonPhone" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="SalesPersonEmailID" Type="varchar" MaxLength="50" />
           <Property Name="TerritoryID" Type="int" Nullable="false" />
         </EntityType>
@@ -157,7 +157,7 @@ warning 6002: The table/view 'S1G6-PVFDB.dbo.ProducedIn' does not have a primary
           <Property Name="VendorID" Type="int" Nullable="false" />
           <Property Name="VendorName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="VendorAddress" Type="varchar" MaxLength="250" />
-          <Property Name="VendorPhone" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="VendorPhone" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="WorkCenter">
           <Key>
@@ -2277,18 +2277,6 @@ warning 6002: The table/view 'S1G6-PVFDB.mdm.viw_SYSTEM_VERSION' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SalesPerson_SalesPerson">
-          <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="1" />
-          <End Role="SalesPerson1" Type="Self.SalesPerson" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="SalesPerson">
-              <PropertyRef Name="SalesPersonID" />
-            </Principal>
-            <Dependent Role="SalesPerson1">
-              <PropertyRef Name="SalesPersonID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SalesPerson_TerritoryID">
           <End Role="Territory" Type="Self.Territory" Multiplicity="1" />
           <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="*" />
@@ -3955,10 +3943,6 @@ warning 6002: The table/view 'S1G6-PVFDB.mdm.viw_SYSTEM_VERSION' does not have a
             <End Role="Territory" EntitySet="Territory" />
             <End Role="DoesBusinessIn" EntitySet="DoesBusinessIn" />
           </AssociationSet>
-          <AssociationSet Name="FK_SalesPerson_SalesPerson" Association="Self.FK_SalesPerson_SalesPerson">
-            <End Role="SalesPerson" EntitySet="SalesPerson" />
-            <End Role="SalesPerson1" EntitySet="SalesPerson" />
-          </AssociationSet>
           <AssociationSet Name="FK_SalesPerson_TerritoryID" Association="Self.FK_SalesPerson_TerritoryID">
             <End Role="Territory" EntitySet="Territory" />
             <End Role="SalesPerson" EntitySet="SalesPerson" />
@@ -4219,7 +4203,7 @@ warning 6002: The table/view 'S1G6-PVFDB.mdm.viw_SYSTEM_VERSION' does not have a
           <Property Name="EmployeeID" Type="Int32" Nullable="false" />
           <Property Name="EmployeeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmployeeAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="EmployeePhone" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="EmployeePhone" Type="String" MaxLength="50" Nullable="false" />
           <Property Name="EmployeeEmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmployeeGender" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="EmployeeDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -4293,11 +4277,9 @@ warning 6002: The table/view 'S1G6-PVFDB.mdm.viw_SYSTEM_VERSION' does not have a
           </Key>
           <Property Name="SalesPersonID" Type="Int32" Nullable="false" />
           <Property Name="SalesPersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SalesPersonPhone" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="SalesPersonPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SalesPersonEmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TerritoryID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="SalesPerson1" Relationship="Self.FK_SalesPerson_SalesPerson" FromRole="SalesPerson" ToRole="SalesPerson1" />
-          <NavigationProperty Name="SalesPerson2" Relationship="Self.FK_SalesPerson_SalesPerson" FromRole="SalesPerson1" ToRole="SalesPerson" />
           <NavigationProperty Name="Territory" Relationship="Self.FK_SalesPerson_TerritoryID" FromRole="SalesPerson" ToRole="Territory" />
         </EntityType>
         <EntityType Name="Supply">
@@ -4336,7 +4318,7 @@ warning 6002: The table/view 'S1G6-PVFDB.mdm.viw_SYSTEM_VERSION' does not have a
           <Property Name="VendorID" Type="Int32" Nullable="false" />
           <Property Name="VendorName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="VendorAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="VendorPhone" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="VendorPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="WorkCenter">
           <Key>
@@ -5228,11 +5210,11 @@ warning 6002: The table/view 'S1G6-PVFDB.mdm.viw_SYSTEM_VERSION' does not have a
             <PropertyRef Name="CustomerPostalCode" />
             <PropertyRef Name="CustomerPhone" />
           </Key>
-          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
           <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CustomerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CustomerPostalCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CustomerPhone" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="CustomerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CustomerEmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CustomerCity" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
         </EntityType>
@@ -6535,18 +6517,6 @@ warning 6002: The table/view 'S1G6-PVFDB.mdm.viw_SYSTEM_VERSION' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SalesPerson_SalesPerson">
-          <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="1" />
-          <End Role="SalesPerson1" Type="Self.SalesPerson" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="SalesPerson">
-              <PropertyRef Name="SalesPersonID" />
-            </Principal>
-            <Dependent Role="SalesPerson1">
-              <PropertyRef Name="SalesPersonID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SalesPerson_TerritoryID">
           <End Role="Territory" Type="Self.Territory" Multiplicity="1" />
           <End Role="SalesPerson" Type="Self.SalesPerson" Multiplicity="*" />
@@ -7397,10 +7367,6 @@ warning 6002: The table/view 'S1G6-PVFDB.mdm.viw_SYSTEM_VERSION' does not have a
           <AssociationSet Name="FK_Uses_RawMaterialID" Association="Self.FK_Uses_RawMaterialID">
             <End Role="RawMaterial" EntitySet="RawMaterials" />
             <End Role="Uses" EntitySet="Uses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SalesPerson_SalesPerson" Association="Self.FK_SalesPerson_SalesPerson">
-            <End Role="SalesPerson" EntitySet="SalesPersons" />
-            <End Role="SalesPerson1" EntitySet="SalesPersons" />
           </AssociationSet>
           <AssociationSet Name="FK_SalesPerson_TerritoryID" Association="Self.FK_SalesPerson_TerritoryID">
             <End Role="Territory" EntitySet="Territories" />

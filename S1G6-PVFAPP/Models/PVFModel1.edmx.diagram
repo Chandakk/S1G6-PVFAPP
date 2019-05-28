@@ -117,7 +117,6 @@
         <AssociationConnector Association="Model.FK_DoesBusinessIn_TerritoryID" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Uses_ProductID" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Uses_RawMaterialID" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_SalesPerson_SalesPerson" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_SalesPerson_TerritoryID" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_tblAttribute_tblAttribute_FilterParentAttribute_ID" ManuallyRouted="false" />
         <AssociationConnector Association="Model.fk_tblAttribute_tblAttribute_Source_ID" ManuallyRouted="false" />

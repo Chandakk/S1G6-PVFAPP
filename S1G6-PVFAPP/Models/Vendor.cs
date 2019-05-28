@@ -17,6 +17,6 @@ namespace S1G6_PVFAPP.Models
         public int VendorID { get; set; }
         public string VendorName { get; set; }
         public string VendorAddress { get; set; }
-        public decimal VendorPhone { get; set; }
+        public string VendorPhone { get; set; }
     }
 }

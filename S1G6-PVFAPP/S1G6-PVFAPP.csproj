@@ -136,6 +136,9 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\RawMaterialsController.cs" />
     <Compile Include="Controllers\SalesPersonsController.cs" />
+    <Compile Include="Controllers\TerritoriesController.cs" />
+    <Compile Include="Controllers\VendorsController.cs" />
+    <Compile Include="Controllers\WorkCentersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -568,6 +571,21 @@
     <Content Include="Views\SalesPersons\Details.cshtml" />
     <Content Include="Views\SalesPersons\Edit.cshtml" />
     <Content Include="Views\SalesPersons\Index.cshtml" />
+    <Content Include="Views\Vendors\Create.cshtml" />
+    <Content Include="Views\Vendors\Delete.cshtml" />
+    <Content Include="Views\Vendors\Details.cshtml" />
+    <Content Include="Views\Vendors\Edit.cshtml" />
+    <Content Include="Views\Vendors\Index.cshtml" />
+    <Content Include="Views\Territories\Create.cshtml" />
+    <Content Include="Views\Territories\Delete.cshtml" />
+    <Content Include="Views\Territories\Details.cshtml" />
+    <Content Include="Views\Territories\Edit.cshtml" />
+    <Content Include="Views\Territories\Index.cshtml" />
+    <Content Include="Views\WorkCenters\Create.cshtml" />
+    <Content Include="Views\WorkCenters\Delete.cshtml" />
+    <Content Include="Views\WorkCenters\Details.cshtml" />
+    <Content Include="Views\WorkCenters\Edit.cshtml" />
+    <Content Include="Views\WorkCenters\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,11 +14,11 @@ namespace S1G6_PVFAPP.Models
     
     public partial class Customer
     {
-        public Nullable<int> CustomerID { get; set; }
+        public int CustomerID { get; set; }
         public string CustomerName { get; set; }
         public string CustomerAddress { get; set; }
         public string CustomerPostalCode { get; set; }
-        public decimal CustomerPhone { get; set; }
+        public string CustomerPhone { get; set; }
         public string CustomerEmailID { get; set; }
         public string CustomerCity { get; set; }
     }

@@ -3,56 +3,57 @@
 @{
     ViewBag.Title = "Details";
 }
+    <div class="container">
+        <h2>Details</h2>
 
-<h2>Details</h2>
+        <div>
+            <h4>Product</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductDescription)
+                </dt>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductDescription)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductDescription)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductDescription)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductName)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductFinish)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductFinish)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductFinish)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductFinish)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductStandardPrice)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductStandardPrice)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductStandardPrice)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductStandardPrice)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductLineID)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductLineID)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductLineID)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductLineID)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+       </div>

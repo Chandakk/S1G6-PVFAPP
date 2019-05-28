@@ -40,13 +40,39 @@ namespace S1G6_PVFAPP.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult Create([Bind(Include = "ProductID,ProductDescription,ProductName,ProductFinish,ProductStandardPrice,ProductLineID")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+
+                //sort the employee and get the last insert employee.
+                var lastProduct = db.Products.OrderByDescending(c => c.ProductID).FirstOrDefault();
+                if (lastProduct == null)
+                {
+                    product.ProductID = 0;
+                }
+                else
+                {
+                    //using string substring method to get the number of the last inserted employee's EmployeeID 
+                    product.ProductID = lastProduct.ProductID + 1;
+                }
+                db.Products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(product);
+        }
 
         // POST: Products/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,ProductDescription,ProductName,ProductFinish,ProductStandardPrice,ProductLineID")] Product product)
+        /*public ActionResult Create([Bind(Include = "ProductID,ProductDescription,ProductName,ProductFinish,ProductStandardPrice,ProductLineID")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -56,7 +82,7 @@ namespace S1G6_PVFAPP.Controllers
             }
 
             return View(product);
-        }
+        }*/
 
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)

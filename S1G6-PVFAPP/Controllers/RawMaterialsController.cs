@@ -50,6 +50,18 @@ namespace S1G6_PVFAPP.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                //sort the employee and get the last insert employee.
+                var lastemployee = db.RawMaterials.OrderByDescending(c => c.RawMaterialID).FirstOrDefault();
+                if (lastemployee == null)
+                {
+                    rawMaterial.RawMaterialID = 0;
+                }
+                else
+                {
+                    //using string substring method to get the number of the last inserted employee's EmployeeID 
+                    rawMaterial.RawMaterialID = lastemployee.RawMaterialID + 1;
+                }
                 db.RawMaterials.Add(rawMaterial);
                 db.SaveChanges();
                 return RedirectToAction("Index");

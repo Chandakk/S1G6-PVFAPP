@@ -15,10 +15,30 @@ namespace S1G6_PVFAPP.Controllers
         private Entities db = new Entities();
 
         // GET: SalesPersons
-        public ActionResult Index()
+        /*public ActionResult Index()
         {
             var salesPersons = db.SalesPersons.Include(s => s.SalesPerson1).Include(s => s.SalesPerson2).Include(s => s.Territory);
             return View(salesPersons.ToList());
+        }*/
+
+        public ActionResult Index(string sortSalesPerson)
+        {
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortSalesPerson) ? "name_desc" : "";
+            // ViewBag.SupervisorParm = sortOrder == "supervisor" ? "super_desc" : "super";
+            var emp = from s in db.SalesPersons
+                      select s;
+            switch (sortSalesPerson)
+            {
+                case "name_desc":
+                    emp = db.SalesPersons.OrderByDescending(s => s.SalesPersonName);
+                    break;
+                default:
+                    emp = db.SalesPersons.OrderBy(s => s.SalesPersonName);
+                    break;
+            }
+            return View(emp.ToList());
+
         }
 
         // GET: SalesPersons/Details/5
@@ -39,9 +59,9 @@ namespace S1G6_PVFAPP.Controllers
         // GET: SalesPersons/Create
         public ActionResult Create()
         {
-            ViewBag.SalesPersonID = new SelectList(db.SalesPersons, "SalesPersonID", "SalesPersonName");
-            ViewBag.SalesPersonID = new SelectList(db.SalesPersons, "SalesPersonID", "SalesPersonName");
-            ViewBag.TerritoryID = new SelectList(db.Territories, "TerritoryID", "TerritoryName");
+            //ViewBag.SalesPersonID = new SelectList(db.SalesPersons, "SalesPersonID", "SalesPersonName");
+            //ViewBag.SalesPersonID = new SelectList(db.SalesPersons, "SalesPersonID", "SalesPersonName");
+            //ViewBag.TerritoryID = new SelectList(db.Territories, "TerritoryID", "TerritoryName");
             return View();
         }
 
@@ -59,9 +79,9 @@ namespace S1G6_PVFAPP.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SalesPersonID = new SelectList(db.SalesPersons, "SalesPersonID", "SalesPersonName", salesPerson.SalesPersonID);
-            ViewBag.SalesPersonID = new SelectList(db.SalesPersons, "SalesPersonID", "SalesPersonName", salesPerson.SalesPersonID);
-            ViewBag.TerritoryID = new SelectList(db.Territories, "TerritoryID", "TerritoryName", salesPerson.TerritoryID);
+            //ViewBag.SalesPersonID = new SelectList(db.SalesPersons, "SalesPersonID", "SalesPersonName", salesPerson.SalesPersonID);
+            //ViewBag.SalesPersonID = new SelectList(db.SalesPersons, "SalesPersonID", "SalesPersonName", salesPerson.SalesPersonID);
+            //ViewBag.TerritoryID = new SelectList(db.Territories, "TerritoryID", "TerritoryName", salesPerson.TerritoryID);
             return View(salesPerson);
         }
 

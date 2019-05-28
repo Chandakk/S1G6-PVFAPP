@@ -50,6 +50,18 @@ namespace S1G6_PVFAPP.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                //sort the employee and get the last insert employee.
+                var lastemployee = db.EmployeeSkills.OrderByDescending(c => c.EmployeeSkillID).FirstOrDefault();
+                if (lastemployee == null)
+                {
+                    employeeSkill.EmployeeSkillID = 0;
+                }
+                else
+                {
+                    //using string substring method to get the number of the last inserted employee's EmployeeID 
+                    employeeSkill.EmployeeSkillID = lastemployee.EmployeeSkillID + 1;
+                }
                 db.EmployeeSkills.Add(employeeSkill);
                 db.SaveChanges();
                 return RedirectToAction("Index");

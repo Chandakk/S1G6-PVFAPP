@@ -15,9 +15,29 @@ namespace S1G6_PVFAPP.Controllers
         private Entities db = new Entities();
 
         // GET: Orders
-        public ActionResult Index()
+        /*public ActionResult Index()
         {
             return View(db.Orders.ToList());
+        }*/
+
+        public ActionResult Index(string sortOrder)
+        {
+           
+                ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+               // ViewBag.SupervisorParm = sortOrder == "supervisor" ? "super_desc" : "super";
+                var emp = from s in db.Orders
+                          select s;
+                switch (sortOrder)
+                {
+                    case "name_desc":
+                        emp = db.Orders.OrderByDescending(s => s.OrderDate);
+                        break;
+                    default:
+                        emp = db.Orders.OrderBy(s => s.OrderDate);
+                        break;
+                }
+                return View(emp.ToList());
+          
         }
 
         // GET: Orders/Details/5
@@ -50,6 +70,18 @@ namespace S1G6_PVFAPP.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                //sort the employee and get the last insert employee.
+                var lastemployee = db.Orders.OrderByDescending(c => c.OrderID).FirstOrDefault();
+                if (lastemployee == null)
+                {
+                    order.OrderID = 0;
+                }
+                else
+                {
+                    //using string substring method to get the number of the last inserted employee's EmployeeID 
+                    order.OrderID = lastemployee.OrderID + 1;
+                }
                 db.Orders.Add(order);
                 db.SaveChanges();
                 return RedirectToAction("Index");
